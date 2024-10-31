@@ -47,3 +47,9 @@ test: build
 		-i $$([ -t 0 ] && echo -t) \
 		$(image_tag) \
 		make test BUILD=/tmp/build
+
+.PHONY: rm-container
+rm-container:
+	for id in $$(docker ps -aq -f "name=^$(container_name)$$"); do \
+		docker rm -f $$id; \
+	done

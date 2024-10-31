@@ -31,7 +31,7 @@ cd rust-microkit-http-server-demo
 Next, build, run, and enter a Docker container for development:
 
 ```
-make -C docker/ run && make -C docker/ exec
+make -C docker/ rm-container && make -C docker/ run && make -C docker/ exec
 ```
 
 Inside the container, build and emulate the demo:
