@@ -18,7 +18,7 @@ cp -r $external_demo_dir crates
 find crates -name Cargo.nix -delete
 mv crates/*.system .
 
-subst='s,path = "\(../\)*../../../../\([^"]*\)",git = "https://github.com/seL4/rust-sel4",g' \
+subst='s,path = "\(../\)*../../../../\([^"]*\)",git = "https://github.com/Huzhiwen1208/rust-sel4.git",g' \
 
 find crates -name Cargo.toml -exec sed -i "$subst" {} +
 

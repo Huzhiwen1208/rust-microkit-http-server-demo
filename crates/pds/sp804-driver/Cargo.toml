@@ -17,8 +17,8 @@ edition = "2021"
 license = "BSD-2-Clause"
 
 [dependencies]
-sel4-driver-interfaces = { git = "https://github.com/seL4/rust-sel4" }
-sel4-microkit = { git = "https://github.com/seL4/rust-sel4", default-features = false }
-sel4-microkit-driver-adapters = { git = "https://github.com/seL4/rust-sel4" }
-sel4-microkit-message = { git = "https://github.com/seL4/rust-sel4" }
-sel4-sp804-driver = { git = "https://github.com/seL4/rust-sel4" }
+sel4-driver-interfaces = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
+sel4-microkit = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", default-features = false }
+sel4-microkit-driver-adapters = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
+sel4-microkit-message = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
+sel4-sp804-driver = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }

@@ -64,15 +64,23 @@ ENV MICROKIT_SDK=/opt/microkit/microkit-sdk-$MICROKIT_SDK_VERSION
 
 RUN set -eux; \
     git clone \
-        https://github.com/seL4/microkit.git \
+        https://github.com/Huzhiwen1208/microkit.git \
         --config advice.detachedHead=false; \
     cd microkit; \
-    git checkout 1ccdfcb3b224533c965fd6508de3dd56657f959c; \
-    git clone \
-        https://github.com/seL4/seL4.git \
+    git checkout microkit-build; \
+    git pull; \
+    cd ..; \
+    git clone https://github.com/rel4team/mi-dev-integral-rel4.git rel4_kernel \
         --config advice.detachedHead=false; \
-    cd seL4; \
-    git checkout 0cdbffec9cf6b4c7c9c57971cbee5a24a70c8fd0;
+    cd rel4_kernel; \
+    git checkout microkit; \
+    git pull; \
+    cd ..; \
+    git clone https://github.com/rel4team/seL4_c_impl.git \
+        --config advice.detachedHead=false; \
+    cd seL4_c_impl; \
+    git checkout microkit; \
+    git pull;
 
 RUN set -eux; \
     cd microkit; \
@@ -80,7 +88,8 @@ RUN set -eux; \
     ./pyenv/bin/pip install --upgrade pip setuptools wheel; \
     ./pyenv/bin/pip install -r requirements.txt; \
     ./pyenv/bin/pip install sel4-deps; \
-    ./pyenv/bin/python3 build_sdk.py --sel4 ./seL4 --skip-docs; \
+    rustup target add aarch64-unknown-none-softfloat; \
+    ./pyenv/bin/python3 build_sdk.py --sel4 ../rel4_kernel --skip-docs; \
     mkdir $(dirname $MICROKIT_SDK); \
     mv release/microkit-sdk-$MICROKIT_SDK_VERSION $MICROKIT_SDK; \
     rm -rf $(pwd);

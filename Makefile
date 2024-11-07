@@ -16,14 +16,14 @@ clean:
 	rm -rf $(build_dir)
 
 microkit_board := qemu_virt_aarch64
-microkit_config := debug
+microkit_config := release
 microkit_sdk_config_dir := $(MICROKIT_SDK)/board/$(microkit_board)/$(microkit_config)
 
 sel4_include_dirs := $(microkit_sdk_config_dir)/include
 
 ### Protection domains
 
-target := aarch64-sel4-microkit
+target := aarch64-unknown-none
 
 target_cc := aarch64-none-elf-gcc
 
@@ -38,8 +38,7 @@ $(crate).intermediate:
 	CC_$(subst -,_,$(target))=$(target_cc) \
 	SEL4_INCLUDE_DIRS=$(abspath $(sel4_include_dirs)) \
 		cargo build \
-			-Z build-std=core,alloc,compiler_builtins \
-			-Z build-std-features=compiler-builtins-mem \
+			-Z build-std=core,alloc \
 			--target-dir $(build_dir)/target \
 			--out-dir $(build_dir) \
 			--target $(target) \
