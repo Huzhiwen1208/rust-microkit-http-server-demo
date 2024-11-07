@@ -23,7 +23,7 @@ sel4_include_dirs := $(microkit_sdk_config_dir)/include
 
 ### Protection domains
 
-target := aarch64-unknown-none
+target := aarch64-sel4-microkit
 
 target_cc := aarch64-none-elf-gcc
 

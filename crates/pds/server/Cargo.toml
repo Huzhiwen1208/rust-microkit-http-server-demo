@@ -23,40 +23,44 @@ lock_api = "0.4.12"
 log = "0.4.17"
 microkit-http-server-example-server-core = { path = "core", features = [] }
 rtcc = "0.3.2"
-sel4 = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-async-block-io = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-async-block-io-fat = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-async-network = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-async-time = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-bounce-buffer-allocator = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-driver-interfaces = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-externally-shared = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", features = ["unstable"] }
-sel4-immediate-sync-once-cell = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-logging = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-microkit-driver-adapters = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-microkit-message = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-newlib = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", features = ["nosys", "all-symbols"] }
-sel4-shared-ring-buffer = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-shared-ring-buffer-block-io = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-shared-ring-buffer-smoltcp = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
-sel4-sync = { git = "https://github.com/Huzhiwen1208/rust-sel4.git" }
+sel4 = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-async-block-io = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-async-block-io-fat = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-async-network = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-async-time = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-bounce-buffer-allocator = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-driver-interfaces = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-externally-shared = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build", features = ["unstable"] }
+sel4-immediate-sync-once-cell = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-logging = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-microkit-driver-adapters = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-microkit-message = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-newlib = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build", features = ["nosys", "all-symbols"] }
+sel4-shared-ring-buffer = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-shared-ring-buffer-block-io = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-shared-ring-buffer-smoltcp = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
+sel4-sync = { git = "https://github.com/Huzhiwen1208/rust-sel4.git", branch = "microkit-build" }
 
 [dependencies.sel4-async-single-threaded-executor]
 git = "https://github.com/Huzhiwen1208/rust-sel4.git"
+branch = "microkit-build"
 
 [dependencies.sel4-microkit]
 git = "https://github.com/Huzhiwen1208/rust-sel4.git"
+branch = "microkit-build"
 default-features = false
 features = ["alloc"]
 
 [dependencies.sel4-shared-ring-buffer-block-io-types]
 git = "https://github.com/Huzhiwen1208/rust-sel4.git"
+branch = "microkit-build"
 
 [dependencies.sel4-shared-ring-buffer-bookkeeping]
 git = "https://github.com/Huzhiwen1208/rust-sel4.git"
+branch = "microkit-build"
 
 [dependencies.smoltcp]
-version = "0.11.0"
+version = "0.10.0"
 default-features = false
 features = [
     "proto-ipv4",

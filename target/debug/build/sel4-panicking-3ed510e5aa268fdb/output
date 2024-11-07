@@ -1,3 +1,0 @@
-cargo:rustc-check-cfg=cfg(catch_unwind_intrinsic_still_named_try)
-cargo:rustc-check-cfg=cfg(panic_info_message_stable)
-cargo:rustc-cfg=panic_info_message_stable

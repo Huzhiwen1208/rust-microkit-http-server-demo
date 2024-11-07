@@ -3,6 +3,18 @@
 version = 4
 
 [[package]]
+name = "ahash"
+version = "0.8.11"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e89da841a80418a9b391ebaea17f5c112ffaaa96f621d2c285b5174da76b9011"
+dependencies = [
+ "cfg-if",
+ "once_cell",
+ "version_check",
+ "zerocopy",
+]
+
+[[package]]
 name = "aho-corasick"
 version = "1.1.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -12,22 +24,10 @@ dependencies = [
 ]
 
 [[package]]
-name = "allocator-api2"
-version = "0.2.18"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5c6cb57a04249c6480766f7f7cef5467412af1490f8d1e243141daddada3264f"
-
-[[package]]
 name = "async-unsync"
 version = "0.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "03ccc573919db5562a0ce1f04838b43c695067a87882855cad0c50bb2491651c"
-
-[[package]]
-name = "async-unsync"
-version = "0.3.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "da39954ed37b9dbb0475df268f10deb609213aefdc6c896adf88417bb2fa7efe"
 
 [[package]]
 name = "atomic-polyfill"
@@ -52,15 +52,17 @@ checksum = "72b3254f16251a8381aa12e40e3c4d2f0199f8c6508fbecb9d91f575e0fbb8c6"
 
 [[package]]
 name = "bindgen"
-version = "0.70.1"
+version = "0.68.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f49d8fed880d473ea71efb9bf597651e77201bdd4893efe54c9e5d65ae04ce6f"
+checksum = "726e4313eb6ec35d2730258ad4e15b547ee75d6afaa1361a922e78e59b7d8078"
 dependencies = [
  "bitflags 2.6.0",
  "cexpr",
  "clang-sys",
- "itertools",
+ "lazy_static",
+ "lazycell",
  "log",
+ "peeking_take_while",
  "prettyplease",
  "proc-macro2",
  "quote",
@@ -68,6 +70,7 @@ dependencies = [
  "rustc-hash",
  "shlex",
  "syn 2.0.87",
+ "which",
 ]
 
 [[package]]
@@ -294,7 +297,7 @@ version = "0.5.0"
 source = "git+https://github.com/coliasgroup/rust-embedded-fat.git?tag=keep%2Fe1465a43c9f550ef58701a275b313310#e1465a43c9f550ef58701a275b3133105deb9183"
 dependencies = [
  "byteorder",
- "heapless 0.7.17",
+ "heapless",
  "log",
 ]
 
@@ -341,22 +344,20 @@ dependencies = [
 ]
 
 [[package]]
-name = "equivalent"
-version = "1.0.1"
+name = "errno"
+version = "0.3.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5"
+checksum = "534c5cf6194dfab3db3242765c03bbe257cf92f22b38f6bc0c58d59108a820ba"
+dependencies = [
+ "libc",
+ "windows-sys 0.52.0",
+]
 
 [[package]]
 name = "fallible-iterator"
-version = "0.3.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2acce4a10f12dc2fb14a218589d4f1f62ef011b2d0cc4b3cb1bba8e94da14649"
-
-[[package]]
-name = "foldhash"
-version = "0.1.3"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f81ec6369c545a7d40e4589b5597581fa1c441fe1cce96dd1de43159910a36a2"
+checksum = "4443176a9f2c162692bd3d352d745ef9413eec5782a80d8fd6f8a1ac692a07f7"
 
 [[package]]
 name = "futures"
@@ -454,9 +455,9 @@ dependencies = [
 
 [[package]]
 name = "gimli"
-version = "0.31.1"
+version = "0.26.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "07e28edb80900c19c28f1072f2e8aeca7fa06b23cd4169cefe1af5aa3260783f"
+checksum = "22030e2c5a68ec659fde1e949a745124b48e6fa8b045b7ed5bd1fe4ccc5c4e5d"
 
 [[package]]
 name = "glob"
@@ -466,9 +467,9 @@ checksum = "d2fabcfbdc87f4758337ca535fb41a6d701b65693ce38287d856d1674551ec9b"
 
 [[package]]
 name = "gpt_disk_types"
-version = "0.16.0"
+version = "0.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "9165f25c3cb4e30437743a410755999f5c753324dfd487d84a30a0858a149021"
+checksum = "1c9cec52cc9bb7305e0178834c310519a4d602952fb65a31bdf60aed797fbf47"
 dependencies = [
  "bytemuck",
  "crc",
@@ -486,23 +487,12 @@ dependencies = [
 ]
 
 [[package]]
-name = "hash32"
-version = "0.3.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "47d60b12902ba28e2730cd37e95b8c9223af2808df9e902d4df49588d1470606"
-dependencies = [
- "byteorder",
-]
-
-[[package]]
 name = "hashbrown"
-version = "0.15.1"
+version = "0.13.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3a9bfc1af68b1726ea47d3d5109de126281def866b33970e10fbab11b5dafab3"
+checksum = "43a3c133739dddd0d2990f9a4bdf8eb4b21ef50e4851ca85ab661199821d510e"
 dependencies = [
- "allocator-api2",
- "equivalent",
- "foldhash",
+ "ahash",
 ]
 
 [[package]]
@@ -512,19 +502,9 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cdc6457c0eb62c71aac4bc17216026d8410337c4126773b9c5daba343f17964f"
 dependencies = [
  "atomic-polyfill",
- "hash32 0.2.1",
+ "hash32",
  "rustc_version",
  "spin 0.9.8",
- "stable_deref_trait",
-]
-
-[[package]]
-name = "heapless"
-version = "0.8.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "0bfb9eb618601c89945a70e254898da93b13be0388091d42117462b265bb3fad"
-dependencies = [
- "hash32 0.3.1",
  "stable_deref_trait",
 ]
 
@@ -535,19 +515,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
 
 [[package]]
+name = "home"
+version = "0.5.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e3d1354bf6b7235cb4a0576c2619fd4ed18183f689b12b006a0ee7329eeff9a5"
+dependencies = [
+ "windows-sys 0.52.0",
+]
+
+[[package]]
 name = "httparse"
 version = "1.9.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7d71d3574edd2771538b901e6549113b4006ece66150fb69c0fb6d9a2adae946"
-
-[[package]]
-name = "itertools"
-version = "0.13.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "413ee7dfc52ee1a4949ceeb7dbc8a33f2d6c088194d9f922fb8318faf1f01186"
-dependencies = [
- "either",
-]
 
 [[package]]
 name = "itoa"
@@ -571,6 +551,12 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bbd2bcb4c963f2ddae06a2efc7e9f3591312473c50c6685e1f298068316e66fe"
 
 [[package]]
+name = "lazycell"
+version = "1.3.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "830d08ce1d1d941e6b30645f1a0eb5643013d835ce3779a5fc208261dbe10f55"
+
+[[package]]
 name = "libc"
 version = "0.2.161"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -585,6 +571,12 @@ dependencies = [
  "cfg-if",
  "windows-targets",
 ]
+
+[[package]]
+name = "linux-raw-sys"
+version = "0.4.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "78b3ae25bc7c8c38cec158d1f2757ee79e9b3740fbc7ccf0e59e4b08d793fa89"
 
 [[package]]
 name = "lock_api"
@@ -604,9 +596,9 @@ checksum = "a7a70ba024b9dc04c27ea2f0c0548feb474ec5c54bba33a7f72f873a39d07b24"
 
 [[package]]
 name = "lru"
-version = "0.12.5"
+version = "0.10.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "234cf4f4a04dc1f57e24b96cc0cd600cf2af460d4161ac5ecdd0af8e1f3b2a38"
+checksum = "718e8fae447df0c7e1ba7f5189829e63fd536945c8988d61444c19039f16b670"
 dependencies = [
  "hashbrown",
 ]
@@ -636,7 +628,7 @@ dependencies = [
 name = "microkit-http-server-example-server"
 version = "0.1.0"
 dependencies = [
- "async-unsync 0.2.2",
+ "async-unsync",
  "futures",
  "lock_api",
  "log",
@@ -781,22 +773,22 @@ dependencies = [
 
 [[package]]
 name = "num_enum"
-version = "0.7.3"
+version = "0.5.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4e613fc340b2220f734a8595782c551f1250e969d87d3be1ae0579e8d4065179"
+checksum = "1f646caf906c20226733ed5b1374287eb97e3c2a5c227ce668c1f2ce20ae57c9"
 dependencies = [
  "num_enum_derive",
 ]
 
 [[package]]
 name = "num_enum_derive"
-version = "0.7.3"
+version = "0.5.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "af1844ef2428cc3e1cb900be36181049ef3d3193c63e43026cfe202983b27a56"
+checksum = "dcbff9bc912032c62bf65ef1d5aea88983b420f4f839db1e9b0c281a25c9c799"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.87",
+ "syn 1.0.109",
 ]
 
 [[package]]
@@ -804,6 +796,12 @@ name = "once_cell"
 version = "1.20.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1261fe7e33c73b354eab43b1273a57c8f967d0391e80353e51f764ac02cf6775"
+
+[[package]]
+name = "peeking_take_while"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "19b17cddbe7ec3f8bc800887bab5e717348c95ea2ca0b1bf0837fb964dc67099"
 
 [[package]]
 name = "pem"
@@ -1070,6 +1068,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "rustix"
+version = "0.38.39"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "375116bee2be9ed569afe2154ea6a99dfdffd257f533f187498c2a8f5feaf4ee"
+dependencies = [
+ "bitflags 2.6.0",
+ "errno",
+ "libc",
+ "linux-raw-sys",
+ "windows-sys 0.52.0",
+]
+
+[[package]]
 name = "rustls"
 version = "0.23.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1125,7 +1136,7 @@ checksum = "94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49"
 [[package]]
 name = "sel4"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "cfg-if",
  "sel4-config",
@@ -1133,14 +1144,9 @@ dependencies = [
 ]
 
 [[package]]
-name = "sel4-abstract-rc"
-version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
-
-[[package]]
 name = "sel4-async-block-io"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "bytemuck",
  "futures",
@@ -1153,11 +1159,11 @@ dependencies = [
 [[package]]
 name = "sel4-async-block-io-fat"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "embedded-fat",
  "futures",
- "heapless 0.8.0",
+ "heapless",
  "hex",
  "log",
  "lru",
@@ -1167,7 +1173,7 @@ dependencies = [
 [[package]]
 name = "sel4-async-io"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "embedded-io-async",
 ]
@@ -1175,7 +1181,7 @@ dependencies = [
 [[package]]
 name = "sel4-async-network"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "log",
  "sel4-async-io",
@@ -1185,7 +1191,7 @@ dependencies = [
 [[package]]
 name = "sel4-async-network-rustls"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "embedded-io-async",
  "log",
@@ -1196,7 +1202,7 @@ dependencies = [
 [[package]]
 name = "sel4-async-network-rustls-utils"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "getrandom",
  "rand",
@@ -1208,7 +1214,7 @@ dependencies = [
 [[package]]
 name = "sel4-async-single-threaded-executor"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "futures",
 ]
@@ -1216,7 +1222,7 @@ dependencies = [
 [[package]]
 name = "sel4-async-time"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "log",
  "pin-project",
@@ -1225,15 +1231,15 @@ dependencies = [
 [[package]]
 name = "sel4-async-unsync"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
- "async-unsync 0.3.0",
+ "async-unsync",
 ]
 
 [[package]]
 name = "sel4-atomic-ptr"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "cfg-if",
 ]
@@ -1241,15 +1247,12 @@ dependencies = [
 [[package]]
 name = "sel4-bitfield-ops"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
-dependencies = [
- "rustc_version",
-]
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 
 [[package]]
 name = "sel4-bitfield-parser"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "pest",
  "pest_derive",
@@ -1259,7 +1262,7 @@ dependencies = [
 [[package]]
 name = "sel4-bounce-buffer-allocator"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "log",
 ]
@@ -1267,24 +1270,23 @@ dependencies = [
 [[package]]
 name = "sel4-build-env"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 
 [[package]]
 name = "sel4-config"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
- "prettyplease",
  "sel4-config-data",
  "sel4-config-generic",
  "sel4-config-macros",
- "syn 2.0.87",
+ "sel4-rustfmt-helper",
 ]
 
 [[package]]
 name = "sel4-config-data"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "lazy_static",
  "sel4-build-env",
@@ -1295,19 +1297,19 @@ dependencies = [
 [[package]]
 name = "sel4-config-generic"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "fallible-iterator",
  "proc-macro2",
  "quote",
  "sel4-config-generic-types",
- "syn 2.0.87",
+ "syn 1.0.109",
 ]
 
 [[package]]
 name = "sel4-config-generic-types"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "serde",
 ]
@@ -1315,21 +1317,16 @@ dependencies = [
 [[package]]
 name = "sel4-config-macros"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "sel4-config-data",
  "sel4-config-generic",
 ]
 
 [[package]]
-name = "sel4-ctors-dtors"
-version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
-
-[[package]]
 name = "sel4-dlmalloc"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "dlmalloc",
  "lock_api",
@@ -1338,10 +1335,10 @@ dependencies = [
 [[package]]
 name = "sel4-driver-interfaces"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "embedded-hal-nb",
- "heapless 0.8.0",
+ "heapless",
  "lock_api",
  "rtcc",
  "serde",
@@ -1350,33 +1347,33 @@ dependencies = [
 [[package]]
 name = "sel4-elf-header"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 
 [[package]]
 name = "sel4-externally-shared"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "cfg-if",
  "sel4-atomic-ptr",
  "volatile",
- "zerocopy 0.8.9",
+ "zerocopy",
 ]
 
 [[package]]
 name = "sel4-immediate-sync-once-cell"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 
 [[package]]
 name = "sel4-immutable-cell"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 
 [[package]]
 name = "sel4-initialize-tls"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "cfg-if",
 ]
@@ -1384,7 +1381,7 @@ dependencies = [
 [[package]]
 name = "sel4-logging"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "lock_api",
  "log",
@@ -1393,11 +1390,10 @@ dependencies = [
 [[package]]
 name = "sel4-microkit"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "cfg-if",
  "sel4",
- "sel4-ctors-dtors",
  "sel4-dlmalloc",
  "sel4-immediate-sync-once-cell",
  "sel4-microkit-base",
@@ -1411,7 +1407,7 @@ dependencies = [
 [[package]]
 name = "sel4-microkit-base"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "sel4",
  "sel4-immutable-cell",
@@ -1420,11 +1416,11 @@ dependencies = [
 [[package]]
 name = "sel4-microkit-driver-adapters"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "chrono",
  "embedded-hal-nb",
- "heapless 0.8.0",
+ "heapless",
  "log",
  "rtcc",
  "sel4-bounce-buffer-allocator",
@@ -1440,17 +1436,17 @@ dependencies = [
 [[package]]
 name = "sel4-microkit-macros"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 2.0.87",
+ "syn 1.0.109",
 ]
 
 [[package]]
 name = "sel4-microkit-message"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "sel4-microkit-base",
  "sel4-microkit-message-types",
@@ -1460,18 +1456,18 @@ dependencies = [
 [[package]]
 name = "sel4-microkit-message-types"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "num_enum",
  "postcard",
  "serde",
- "zerocopy 0.8.9",
+ "zerocopy",
 ]
 
 [[package]]
 name = "sel4-newlib"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "cc",
  "sel4-panicking-env",
@@ -1480,24 +1476,23 @@ dependencies = [
 [[package]]
 name = "sel4-panicking"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "cfg-if",
  "rustc_version",
  "sel4-immediate-sync-once-cell",
  "sel4-panicking-env",
- "unwinding",
 ]
 
 [[package]]
 name = "sel4-panicking-env"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 
 [[package]]
 name = "sel4-pl031-driver"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "rtcc",
  "tock-registers",
@@ -1506,33 +1501,40 @@ dependencies = [
 [[package]]
 name = "sel4-runtime-common"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "cfg-if",
  "sel4",
  "sel4-elf-header",
  "sel4-initialize-tls",
  "sel4-panicking-env",
- "sel4-stack",
  "unwinding",
+]
+
+[[package]]
+name = "sel4-rustfmt-helper"
+version = "0.1.0"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
+dependencies = [
+ "which",
 ]
 
 [[package]]
 name = "sel4-shared-ring-buffer"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "log",
  "sel4-externally-shared",
- "zerocopy 0.8.9",
+ "zerocopy",
 ]
 
 [[package]]
 name = "sel4-shared-ring-buffer-block-io"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
- "async-unsync 0.3.0",
+ "async-unsync",
  "futures",
  "log",
  "sel4-async-block-io",
@@ -1546,79 +1548,61 @@ dependencies = [
 [[package]]
 name = "sel4-shared-ring-buffer-block-io-types"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "num_enum",
  "sel4-shared-ring-buffer",
- "zerocopy 0.8.9",
+ "zerocopy",
 ]
 
 [[package]]
 name = "sel4-shared-ring-buffer-bookkeeping"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
- "async-unsync 0.3.0",
+ "async-unsync",
 ]
 
 [[package]]
 name = "sel4-shared-ring-buffer-smoltcp"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
- "lock_api",
  "log",
- "sel4-abstract-rc",
  "sel4-bounce-buffer-allocator",
  "sel4-externally-shared",
  "sel4-shared-ring-buffer",
  "sel4-shared-ring-buffer-bookkeeping",
- "sel4-sync-trivial",
  "smoltcp",
 ]
 
 [[package]]
 name = "sel4-sp804-driver"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "sel4-driver-interfaces",
  "tock-registers",
 ]
 
 [[package]]
-name = "sel4-stack"
-version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
-
-[[package]]
 name = "sel4-sync"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "lock_api",
  "sel4",
  "sel4-immediate-sync-once-cell",
- "sel4-sync-trivial",
-]
-
-[[package]]
-name = "sel4-sync-trivial"
-version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
-dependencies = [
- "lock_api",
 ]
 
 [[package]]
 name = "sel4-sys"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "bindgen",
  "glob",
  "log",
- "prettyplease",
  "proc-macro2",
  "quote",
  "sel4-bitfield-ops",
@@ -1626,14 +1610,15 @@ dependencies = [
  "sel4-build-env",
  "sel4-config",
  "sel4-config-data",
- "syn 2.0.87",
+ "sel4-rustfmt-helper",
+ "syn 1.0.109",
  "xmltree",
 ]
 
 [[package]]
 name = "sel4-virtio-blk"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "log",
  "sel4-driver-interfaces",
@@ -1643,7 +1628,7 @@ dependencies = [
 [[package]]
 name = "sel4-virtio-hal-impl"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "sel4-bounce-buffer-allocator",
  "sel4-externally-shared",
@@ -1655,7 +1640,7 @@ dependencies = [
 [[package]]
 name = "sel4-virtio-net"
 version = "0.1.0"
-source = "git+https://github.com/Huzhiwen1208/rust-sel4.git#427cdd7abbaa45184ad6b393b7e1f4cce00731ea"
+source = "git+https://github.com/Huzhiwen1208/rust-sel4.git?branch=microkit-build#8e4564f73bbf479ef6e99ca58f06d31eef4f2261"
 dependencies = [
  "log",
  "sel4-driver-interfaces",
@@ -1720,15 +1705,15 @@ checksum = "0fda2ff0d084019ba4d7c6f371c95d8fd75ce3524c3cb8fb653a3023f6323e64"
 
 [[package]]
 name = "smoltcp"
-version = "0.11.0"
+version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "5a1a996951e50b5971a2c8c0fa05a381480d70a933064245c4a223ddc87ccc97"
+checksum = "8d2e3a36ac8fea7b94e666dfa3871063d6e0a5c9d5d4fec9a1a6b7b6760f0229"
 dependencies = [
  "bitflags 1.3.2",
  "byteorder",
  "cfg-if",
  "defmt",
- "heapless 0.8.0",
+ "heapless",
  "log",
  "managed",
 ]
@@ -1767,6 +1752,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "72b64191b275b66ffe2469e8af2c1cfe3bafa67b529ead792a6d0160888b4237"
 dependencies = [
  "proc-macro2",
+ "quote",
  "unicode-ident",
 ]
 
@@ -1822,9 +1808,9 @@ checksum = "ef927ca75afb808a4d64dd374f00a2adf8d0fcff8e7b184af886c3c87ec4a3f3"
 
 [[package]]
 name = "tock-registers"
-version = "0.9.0"
+version = "0.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2b9e2fdb3a1e862c0661768b7ed25390811df1947a8acbfbefe09b47078d93c4"
+checksum = "696941a0aee7e276a165a978b37918fd5d22c55c3d6bda197813070ca9c0f21c"
 
 [[package]]
 name = "typenum"
@@ -1876,9 +1862,9 @@ checksum = "8ecb6da28b8a351d773b68d5825ac39017e680750f980f3a1a85cd8dd28a47c1"
 
 [[package]]
 name = "unwinding"
-version = "0.2.3"
+version = "0.1.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "637d511437df708cee34bdec7ba2f1548d256b7acf3ff20e0a1c559f9bf3a987"
+checksum = "bf10020069685fe1046038e07aec0b92b087ed282aa620c9afd9671b7f26ce9d"
 dependencies = [
  "gimli",
 ]
@@ -1898,7 +1884,7 @@ dependencies = [
  "bitflags 2.6.0",
  "enumn",
  "log",
- "zerocopy 0.7.35",
+ "zerocopy",
 ]
 
 [[package]]
@@ -1984,6 +1970,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "841c67bff177718f1d4dfefde8d8f0e78f9b6589319ba88312f567fc5841a958"
 dependencies = [
  "rustls-pki-types",
+]
+
+[[package]]
+name = "which"
+version = "4.4.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "87ba24419a2078cd2b0f2ede2691b6c66d8e47836da3b6db8265ebad47afbfc7"
+dependencies = [
+ "either",
+ "home",
+ "once_cell",
+ "rustix",
 ]
 
 [[package]]
@@ -2098,9 +2096,9 @@ checksum = "af310deaae937e48a26602b730250b4949e125f468f11e6990be3e5304ddd96f"
 
 [[package]]
 name = "xmltree"
-version = "0.11.0"
+version = "0.10.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b619f8c85654798007fb10afa5125590b43b088c225a25fc2fec100a9fad0fc6"
+checksum = "d7d8a75eaf6557bb84a65ace8609883db44a29951042ada9b393151532e41fcb"
 dependencies = [
  "xml-rs",
 ]
@@ -2121,16 +2119,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1b9b4fd18abc82b8136838da5d50bae7bdea537c574d8dc1a34ed098d6c166f0"
 dependencies = [
  "byteorder",
- "zerocopy-derive 0.7.35",
-]
-
-[[package]]
-name = "zerocopy"
-version = "0.8.9"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f49e690f8f352f4a9ee8679a8c5921f42ffd0d6d6413a0a66b8e81cf524e109c"
-dependencies = [
- "zerocopy-derive 0.8.9",
+ "zerocopy-derive",
 ]
 
 [[package]]
@@ -2138,17 +2127,6 @@ name = "zerocopy-derive"
 version = "0.7.35"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fa4f8080344d4671fb4e831a13ad1e68092748387dfc4f55e356242fae12ce3e"
-dependencies = [
- "proc-macro2",
- "quote",
- "syn 2.0.87",
-]
-
-[[package]]
-name = "zerocopy-derive"
-version = "0.8.9"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fa732fcc881df7a6fbe8e3ed17baadece53b379ad58fe2633396b1a2b108a7b1"
 dependencies = [
  "proc-macro2",
  "quote",

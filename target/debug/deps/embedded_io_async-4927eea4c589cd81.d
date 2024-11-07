@@ -1,9 +1,0 @@
-/home/ubuntu/src_code/rust/sel4-rel4/http-server/target/debug/deps/libembedded_io_async-4927eea4c589cd81.rmeta: /home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/lib.rs /home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/impls/mod.rs /home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/impls/slice_mut.rs /home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/impls/slice_ref.rs /home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/../README.md
-
-/home/ubuntu/src_code/rust/sel4-rel4/http-server/target/debug/deps/embedded_io_async-4927eea4c589cd81.d: /home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/lib.rs /home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/impls/mod.rs /home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/impls/slice_mut.rs /home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/impls/slice_ref.rs /home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/../README.md
-
-/home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/lib.rs:
-/home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/impls/mod.rs:
-/home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/impls/slice_mut.rs:
-/home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/impls/slice_ref.rs:
-/home/ubuntu/.cargo/registry/src/mirrors.ustc.edu.cn-61ef6e0cd06fb9b8/embedded-io-async-0.6.1/src/../README.md:
